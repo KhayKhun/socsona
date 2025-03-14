@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Socsona</title>
+
+    <!-- Meta Description (for SEO) -->
+    <meta
+      name="description"
+      content="Discover your digital personality! Take a fun, engaging quiz to find out which animal matches your social media style. Are you a social butterfly or a silent observer? Find out now!"
+    />
+
+    <!-- Open Graph Protocol (OGP) -->
+    <meta property="og:title" content="Socsona" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://socsona.vercel.app/" />
+    <meta property="og:description" content="Discover your digital personality! Take a fun, engaging quiz to find out which animal matches your social media style." />
+
+    <!-- Fixed og:image (Now using absolute URL) -->
+    <meta property="og:image" content="https://socsona.vercel.app/ogp.png" />
+    <meta property="og:image:secure_url" content="https://socsona.vercel.app/ogp.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="1280" />
+    <meta property="og:image:alt" content="Very cute pixelated animals" />
+  </head>
+  <body>
+    <div id="root" class="bg-gradient-to-b from-blue-600 to-blue-400">
+      <audio id="audio" loop autoplay>
+        <source src="/background.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
