@@ -15,8 +15,7 @@
  * - "V" (Private): Values privacy and tends to keep personal information and interactions limited.
  * 
  * CEL are in a group, ODS are in a group, PV are a group. 
- * When the result is counted, I will chose the one from CEL, the highest one. one from ODS and one from PV. So the result will be something like COP, COV, EDV,... A person must have
- * a trait from CEL, a trait from ODS, a trait from PV.
+ * When the result is counted, we pick one from CEL, one from ODS, one from PV. e.g. "COP", "ESV", etc.
  */
 export type TraitKey =
   | "C" // Creator
@@ -28,6 +27,7 @@ export type TraitKey =
   | "P" // Public
   | "V"; // Private
 
+// Each possible answer a user can pick in a single question.
 export interface DialogAnswer {
   text: string;
   answerFollowUp: string[];
@@ -35,15 +35,18 @@ export interface DialogAnswer {
   scores: Partial<Record<TraitKey, number>>;
 }
 
+// Each question object in the conversation flow.
 export interface Dialog {
   id: number;
   questions: string;
   answers: DialogAnswer[];
 }
+
 export const dialogs: Dialog[] = [
   {
     id: 0,
-    questions: "Hi there! Welcome from Socsona. We're here to let you know about yourself by just knowing how you use social media.",
+    questions:
+      "Hi there! Welcome from Socsona. We're here to let you know about yourself by just knowing how you use social media.",
     answers: [
       {
         text: "Okay, I'm interested.",
@@ -55,7 +58,8 @@ export const dialogs: Dialog[] = [
   },
   {
     id: 99,
-    questions: "Before we start, I will ask you some simple questions about how you use social media. Then, I will tell you what I learn about you.",
+    questions:
+      "Before we start, I will ask you some simple questions about how you use social media. Then, I will tell you what I learn about you.",
     answers: [
       {
         text: "Okay, let's do it.",
@@ -67,7 +71,8 @@ export const dialogs: Dialog[] = [
   },
   {
     id: 1,
-    questions: "Imagine a new social media app is becoming very popular. Everyone is talking about it. What do you do?",
+    questions:
+      "Imagine a new social media app is becoming very popular. Everyone is talking about it. What do you do?",
     answers: [
       {
         text: "I already made an account and posted something!",
@@ -84,15 +89,17 @@ export const dialogs: Dialog[] = [
       {
         text: "I will ignore it for now.",
         answerFollowUp: ["I don’t change apps often."],
-        responseFollowUp: ["You like to stick with what you know. That makes sense!"],
+        responseFollowUp: [
+          "You like to stick with what you know. That makes sense!",
+        ],
         scores: { L: 3, V: 2, S: 1 },
       },
     ],
   },
-
   {
     id: 2,
-    questions: "Your friend tags you in a public post without asking you first. What do you do?",
+    questions:
+      "Your friend tags you in a public post without asking you first. What do you do?",
     answers: [
       {
         text: "It’s okay, I will leave it.",
@@ -114,7 +121,6 @@ export const dialogs: Dialog[] = [
       },
     ],
   },
-
   {
     id: 3,
     questions: "There is a new trend on social media. Are you joining in?",
@@ -122,24 +128,29 @@ export const dialogs: Dialog[] = [
       {
         text: "Yes! I will make my own version right away.",
         answerFollowUp: ["It looks fun!"],
-        responseFollowUp: ["You enjoy making content and trying new things!"],
+        responseFollowUp: [
+          "You enjoy making content and trying new things!",
+        ],
         scores: { C: 3, O: 2, P: 3 },
       },
       {
         text: "Maybe, but I will do a simple version.",
         answerFollowUp: [],
-        responseFollowUp: ["You like to be part of trends, but in a careful way."],
+        responseFollowUp: [
+          "You like to be part of trends, but in a careful way.",
+        ],
         scores: { D: 2, C: 2, S: 2, P: 1 },
       },
       {
         text: "No, I will just watch other people do it.",
         answerFollowUp: ["I prefer to observe."],
-        responseFollowUp: ["You enjoy watching trends, but you don’t feel the need to join."],
+        responseFollowUp: [
+          "You enjoy watching trends, but you don’t feel the need to join.",
+        ],
         scores: { L: 3, E: 2, S: 1 },
       },
     ],
   },
-
   {
     id: 4,
     questions: "Someone leaves a rude comment on your post. What do you do?",
@@ -153,21 +164,25 @@ export const dialogs: Dialog[] = [
       {
         text: "I will delete the comment or block them.",
         answerFollowUp: ["No need for drama."],
-        responseFollowUp: ["You keep things peaceful. That’s a good strategy."],
+        responseFollowUp: [
+          "You keep things peaceful. That’s a good strategy.",
+        ],
         scores: { S: 3, V: 2, E: 1 },
       },
       {
         text: "I will reply and try to understand why they said that.",
         answerFollowUp: ["Maybe they misunderstood me."],
-        responseFollowUp: ["You like to solve problems with words. That is very thoughtful."],
+        responseFollowUp: [
+          "You like to solve problems with words. That is very thoughtful.",
+        ],
         scores: { D: 3, E: 2, S: 1 },
       },
     ],
   },
-
   {
     id: 5,
-    questions: "You check your phone and see that you have spent 6 hours on social media today. What do you think?",
+    questions:
+      "You check your phone and see that you have spent 6 hours on social media today. What do you think?",
     answers: [
       {
         text: "That’s fine. I enjoy my time online.",
@@ -178,63 +193,79 @@ export const dialogs: Dialog[] = [
       {
         text: "That is too much! I need to use my phone less.",
         answerFollowUp: [],
-        responseFollowUp: ["You like to keep a good balance. That is smart!"],
+        responseFollowUp: [
+          "You like to keep a good balance. That is smart!",
+        ],
         scores: { D: 3, S: 1, V: 2 },
       },
       {
         text: "I was creating content, so it’s okay.",
         answerFollowUp: [],
-        responseFollowUp: ["You see social media as a creative space! That’s great."],
+        responseFollowUp: [
+          "You see social media as a creative space! That’s great.",
+        ],
         scores: { C: 3, O: 2, E: 2, P: 2 },
       },
     ],
   },
-
   {
     id: 6,
-    questions: "You just watched a very interesting video. What do you do next?",
+    questions:
+      "You just watched a very interesting video. What do you do next?",
     answers: [
       {
         text: "I will share it right away! My friends need to see this.",
         answerFollowUp: ["They will love it!"],
-        responseFollowUp: ["You enjoy sharing things that make you happy!"],
+        responseFollowUp: [
+          "You enjoy sharing things that make you happy!",
+        ],
         scores: { E: 3, P: 3, O: 2 },
       },
       {
         text: "Only if it is really good.",
         answerFollowUp: ["I don’t want to spam people."],
-        responseFollowUp: ["You like to share things in a meaningful way!"],
+        responseFollowUp: [
+          "You like to share things in a meaningful way!",
+        ],
         scores: { D: 2, S: 2, P: 1 },
       },
       {
         text: "No, I will just enjoy it by myself.",
         answerFollowUp: ["Not everything needs to be shared."],
-        responseFollowUp: ["You prefer a more private experience. That’s okay too!"],
+        responseFollowUp: [
+          "You prefer a more private experience. That’s okay too!",
+        ],
         scores: { L: 3, V: 3, S: 1 },
       },
     ],
   },
-
   {
     id: 7,
-    questions: "Think about when you are on social media. Do you start conversations, or do you wait for others?",
+    questions:
+      "Think about when you are on social media. Do you start conversations, or do you wait for others?",
     answers: [
       {
         text: "I like to start conversations!",
         answerFollowUp: ["It’s fun to talk to people."],
-        responseFollowUp: ["You are very social and enjoy connecting with others!"],
+        responseFollowUp: [
+          "You are very social and enjoy connecting with others!",
+        ],
         scores: { O: 3, C: 2, P: 2 },
       },
       {
         text: "Sometimes, if I have something to say.",
         answerFollowUp: ["It depends on the topic."],
-        responseFollowUp: ["You like to join conversations when it feels right!"],
+        responseFollowUp: [
+          "You like to join conversations when it feels right!",
+        ],
         scores: { D: 2, E: 2, S: 1 },
       },
       {
         text: "I usually wait for others to start.",
         answerFollowUp: ["I prefer listening to talking."],
-        responseFollowUp: ["You enjoy being part of conversations, but you don’t always start them. That’s okay!"],
+        responseFollowUp: [
+          "You enjoy being part of conversations, but you don’t always start them. That’s okay!",
+        ],
         scores: { L: 3, V: 3, S: 1 },
       },
     ],

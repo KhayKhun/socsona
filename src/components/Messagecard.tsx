@@ -1,11 +1,9 @@
-import React from "react";
-
 type Props = {
   speaker: "guru" | "user";
   children: React.ReactNode;
 };
 
-const Messagecard = ({ speaker, children }: Props) => {
+const MessageCard = ({ speaker, children }: Props) => {
   return (
     <div className="my-2">
       <div>
@@ -16,4 +14,4 @@ const Messagecard = ({ speaker, children }: Props) => {
   );
 };
 
-export default Messagecard;
+export default MessageCard;
