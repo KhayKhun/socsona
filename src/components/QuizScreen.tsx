@@ -1,5 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
-import MessageCard from "./MessageCard";
+import Message from "./Message";
 import { Dialog } from "../data/dialogs";
 
 interface QuizScreenProps {
@@ -60,7 +60,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
         <div className="max-w-md w-full bg-white/80 p-4 rounded-lg shadow-md text-black text-[10px] md:text-sm lg:text-base">
           {/* If user has answered, show guru lines; else show question text */}
           {isAnswered && guruResponseMessages.length > 0 ? (
-            <MessageCard speaker="guru">
+            <Message speaker="guru">
               <TypeAnimation
                 key={`guru-${questionIndex}-${currentAnswerIndex}`}
                 sequence={[guruResponseMessages.join("\n"), () => onNextQuestion()]}
@@ -68,9 +68,9 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
                 repeat={0}
                 speed={TEXT_SPEED}
               />
-            </MessageCard>
+            </Message>
           ) : (
-            <MessageCard speaker="guru">
+            <Message speaker="guru">
               <TypeAnimation
                 key={`question-${questionIndex}`}
                 sequence={[
@@ -81,7 +81,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
                 repeat={0}
                 speed={TEXT_SPEED}
               />
-            </MessageCard>
+            </Message>
           )}
 
           {/* Answer buttons */}
@@ -104,7 +104,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
 
           {/* User's lines (once they've selected an answer) */}
           {currentAnswerIndex !== null && !isAnswered && (
-            <MessageCard speaker="user">
+            <Message speaker="user">
               <TypeAnimation
                 key={`answer-${questionIndex}-${currentAnswerIndex}`}
                 sequence={[userResponseMessages.join("\n"), () => handleUserAnswered()]}
@@ -112,7 +112,7 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
                 repeat={0}
                 speed={TEXT_SPEED}
               />
-            </MessageCard>
+            </Message>
           )}
         </div>
       </div>

@@ -3,7 +3,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const MessageCard = ({ speaker, children }: Props) => {
+const Message = ({ speaker, children }: Props) => {
   return (
     <div className="my-2">
       <div>
@@ -14,4 +14,4 @@ const MessageCard = ({ speaker, children }: Props) => {
   );
 };
 
-export default MessageCard;
+export default Message;
