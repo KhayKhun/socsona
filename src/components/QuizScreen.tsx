@@ -116,6 +116,9 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
           )}
         </div>
       </div>
+      <div className="flex justify-center items-center px-4 py-2 sm:py-4 fixed top-0 left-0 w-screen text-[8px] md:text-sm bg-yellow-500">
+        <a href="https://github.com/KhayKhun/socsona" target="_blank" className="flex items-center gap-2 text-[8px] md:text-[10px]"><img src="/github.svg" className="h-auto w-[15px] md:w-[30px]" /> https://github.com/KhayKhun/socsona</a>
+      </div>
     </div>
   );
 };
