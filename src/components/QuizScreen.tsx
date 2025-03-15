@@ -1,5 +1,5 @@
 import { TypeAnimation } from "react-type-animation";
-import MessageCard from "./MessageCard.tsx";
+import MessageCard from "./MessageCard";
 import { Dialog } from "../data/dialogs";
 
 interface QuizScreenProps {
